@@ -1,0 +1,22 @@
+{$CLEO}
+0000: NOP
+repeat
+wait 50
+until 0AFA: is_samp_structures_available
+0B34: samp register_client_command "" to_label @activate
+
+:First
+wait 0
+if 31@ == 1 
+then
+
+end
+jump @First
+
+:activate
+0B12: 31@ = 31@ XOR 1
+samp.CmdRet
+
+//0AB1: call_scm_func @name 0
+:function
+0AB2: ret 0
